@@ -1,0 +1,2 @@
+rootProject.name='fast-tag'
+include 'fast-tag', 'fast-tag-lexicon', 'fast-tag-lexicon-medical'
