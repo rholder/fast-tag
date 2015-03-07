@@ -3,13 +3,13 @@ import org.gradle.api.artifacts.maven.MavenDeployment
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Settings
 ext {
-    project_group = 'com.github.rholder'
+    project_group = 'com.github.rholder.nlp.tagging'
     project_version = '0.1.0-SNAPSHOT'
     project_jdk = '1.6'
     project_pom = {
         name 'fast-tag'
         packaging 'jar'
-        description "TODO COMMENT"
+        description "This is a fork of Mark Watson's part of speech tagger."
         url 'http://rholder.github.com'
 
         scm {
@@ -166,7 +166,6 @@ idea {
         downloadSources = true
     }
     project {
-        jdkName = project_jdk
         languageLevel = project_jdk
         vcs = 'Git'
     }

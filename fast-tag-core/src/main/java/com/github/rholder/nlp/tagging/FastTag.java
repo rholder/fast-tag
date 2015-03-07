@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.knowledgebooks.nlp.fasttag;
+package com.github.rholder.nlp.tagging;
 
 import java.io.*;
 import java.util.*;
@@ -122,12 +122,12 @@ public class FastTag {
 	public static void main(String[] args) {
 		if (args.length == 0) {
 			System.out.println("Usage: argument is a string like \"The ball rolled down the street.\"\n\nSample run:\n");
-			List<String> words = com.knowledgebooks.nlp.util.Tokenizer.wordsToList("The ball rolled down the street.");
+			List<String> words = Tokenizer.wordsToList("The ball rolled down the street.");
 			List<String> tags = tag(words);
 			for (int i = 0; i < words.size(); i++)
 				System.out.println(words.get(i) + "/" + tags.get(i));
 		} else {
-			List<String> words = com.knowledgebooks.nlp.util.Tokenizer.wordsToList(args[0]);
+			List<String> words = Tokenizer.wordsToList(args[0]);
 			List<String> tags = tag(words);
 			for (int i = 0; i < words.size(); i++)
 				System.out.println(words.get(i) + "/" + tags.get(i));

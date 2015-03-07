@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.knowledgebooks.nlp.util;
+package com.github.rholder.nlp.tagging;
 
 import java.util.*;
 import java.io.*;
