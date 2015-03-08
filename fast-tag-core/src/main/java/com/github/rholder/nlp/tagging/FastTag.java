@@ -16,7 +16,6 @@
 
 package com.github.rholder.nlp.tagging;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -106,7 +105,7 @@ public class FastTag {
 		try {
 			InputStream ins = FastTag.class.getClassLoader().getResourceAsStream("fast-tag-lexicon.txt");
 			if (ins == null) {
-				ins = new FileInputStream("data/lexicon.txt");
+				throw new RuntimeException("Could not find lexicon file on classpath");
 			}
 			Scanner scanner = new Scanner(ins);
 			scanner.useDelimiter(System.getProperty("line.separator"));
