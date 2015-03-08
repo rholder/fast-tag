@@ -16,20 +16,19 @@
 
 package com.github.rholder.nlp.tagging;
 
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class FastTag {
 
 	private final Map<String, String[]> lexicon;
 
-    public FastTag() {
-        this.lexicon = buildLexicon("fast-tag-lexicon.txt");
+    public FastTag(Map<String, String[]> lexicon) {
+        if(lexicon == null) {
+            throw new RuntimeException("Lexicon cannot be null.");
+        }
+        this.lexicon = lexicon;
     }
 
 	/**
@@ -99,43 +98,4 @@ public class FastTag {
 		}
 		return ret;
 	}
-
-	private Map<String, String[]> buildLexicon(String classpath) {
-		Map<String, String[]> lexicon = new HashMap<String, String[]>();
-		try {
-			InputStream ins = FastTag.class.getClassLoader().getResourceAsStream(classpath);
-			if (ins == null) {
-				throw new RuntimeException("Could not find lexicon file on classpath");
-			}
-			Scanner scanner = new Scanner(ins);
-			scanner.useDelimiter(System.getProperty("line.separator"));
-			while (scanner.hasNext()) {
-				String line = scanner.next();
-				int count = 0;
-				for (int i = 0, size = line.length(); i < size; i++) {
-					if (line.charAt(i) == ' ') {
-						count++;
-					}
-				}
-				if (count == 0) {
-					continue;
-				}
-				String[] ss = new String[count];
-				Scanner lineScanner = new Scanner(line);
-				lineScanner.useDelimiter(" ");
-				String word = lineScanner.next();
-				count = 0;
-				while (lineScanner.hasNext()) {
-					ss[count++] = lineScanner.next();
-				}
-				lineScanner.close();
-				lexicon.put(word, ss);
-			}
-			scanner.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return Collections.unmodifiableMap(lexicon);
-	}
-
 }
