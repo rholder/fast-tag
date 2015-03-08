@@ -16,8 +16,14 @@
 
 package com.github.rholder.nlp.tagging;
 
-import java.io.*;
-import java.util.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 /**
  * <p/>
