@@ -32,14 +32,18 @@ import java.util.Scanner;
  */
 public class FastTag {
 
-	private static final Map<String, String[]> lexicon = buildLexicon();
+	private final Map<String, String[]> lexicon;
+
+    public FastTag() {
+        this.lexicon = buildLexicon();
+    }
 
 	/**
 	 * 
 	 * @param word
 	 * @return true if the input word is in the lexicon, otherwise return false
 	 */
-	public static boolean wordInLexicon(String word) {
+	public boolean wordInLexicon(String word) {
 		String[] ss = lexicon.get(word);
 		if (ss != null)
 			return true;
@@ -57,10 +61,10 @@ public class FastTag {
 	 *            list of strings to tag with parts of speech
 	 * @return list of strings for part of speech tokens
 	 */
-	public static List<String> tag(List<String> words) {
+	public List<String> tag(List<String> words) {
 		List<String> ret = new ArrayList<String>(words.size());
 		for (int i = 0, size = words.size(); i < size; i++) {
-			String[] ss = (String[]) lexicon.get(words.get(i));
+			String[] ss = lexicon.get(words.get(i));
 			// 1/22/2002 mod (from Lisp code): if not in hash, try lower case:
 			if (ss == null)
 				ss = lexicon.get(words.get(i).toLowerCase());
@@ -129,21 +133,21 @@ public class FastTag {
 		if (args.length == 0) {
 			System.out.println("Usage: argument is a string like \"The ball rolled down the street.\"\n\nSample run:\n");
 			List<String> words = Tokenizer.wordsToList("The ball rolled down the street.");
-			List<String> tags = tag(words);
+			List<String> tags = new FastTag().tag(words);
 			for (int i = 0; i < words.size(); i++)
 				System.out.println(words.get(i) + "/" + tags.get(i));
 		} else {
 			List<String> words = Tokenizer.wordsToList(args[0]);
-			List<String> tags = tag(words);
+			List<String> tags = new FastTag().tag(words);
 			for (int i = 0; i < words.size(); i++)
 				System.out.println(words.get(i) + "/" + tags.get(i));
 		}
 	}
 
-	private static Map<String, String[]> buildLexicon() {
+	private Map<String, String[]> buildLexicon() {
 		Map<String, String[]> lexicon = new HashMap<String, String[]>();
 		try {
-			InputStream ins = FastTag.class.getClassLoader().getResourceAsStream("lexicon.txt");
+			InputStream ins = FastTag.class.getClassLoader().getResourceAsStream("fast-tag-lexicon.txt");
 			if (ins == null) {
 				ins = new FileInputStream("data/lexicon.txt");
 			}
