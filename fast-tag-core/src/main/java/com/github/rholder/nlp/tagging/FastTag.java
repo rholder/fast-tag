@@ -29,7 +29,7 @@ public class FastTag {
 	private final Map<String, String[]> lexicon;
 
     public FastTag() {
-        this.lexicon = buildLexicon();
+        this.lexicon = buildLexicon("fast-tag-lexicon.txt");
     }
 
 	/**
@@ -100,10 +100,10 @@ public class FastTag {
 		return ret;
 	}
 
-	private Map<String, String[]> buildLexicon() {
+	private Map<String, String[]> buildLexicon(String classpath) {
 		Map<String, String[]> lexicon = new HashMap<String, String[]>();
 		try {
-			InputStream ins = FastTag.class.getClassLoader().getResourceAsStream("fast-tag-lexicon.txt");
+			InputStream ins = FastTag.class.getClassLoader().getResourceAsStream(classpath);
 			if (ins == null) {
 				throw new RuntimeException("Could not find lexicon file on classpath");
 			}
