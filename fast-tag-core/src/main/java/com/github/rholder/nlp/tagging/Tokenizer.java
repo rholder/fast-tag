@@ -21,19 +21,13 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * <p/>
- * Copyright 2007 by Mark Watson. All rights reserved.
- * <p/>
- */
 public class Tokenizer {
     /**
      * utility to tokenize an input string into an Array of Strings
      * @param s2 string containing words to tokenize
      * @return a List<String> of parsed tokens
      */
-    static public List<String> wordsToList(String s2) {
+    public static List<String> wordsToList(String s2) {
         return wordsToList(s2, s2.length() + 1);
     }
 
@@ -43,7 +37,7 @@ public class Tokenizer {
      * @param maxR maximum number of tokens to return
      * @return a List<String> of parsed tokens
      */
-    static public List<String> wordsToList(String s2, int maxR) {
+    public static List<String> wordsToList(String s2, int maxR) {
         s2 = stripControlCharacters(s2);
         List<String> words = new ArrayList<String>();
         String x;
@@ -110,7 +104,7 @@ public class Tokenizer {
         return words;
     }
 
-    static private String stripControlCharacters(String s) {
+    private static String stripControlCharacters(String s) {
         StringBuffer sb = new StringBuffer(s.length() + 1);
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);

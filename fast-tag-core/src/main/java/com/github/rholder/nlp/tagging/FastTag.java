@@ -25,11 +25,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-/**
- * <p/>
- * Copyright 2002-2007 by Mark Watson. All rights reserved.
- * <p/>
- */
 public class FastTag {
 
 	private final Map<String, String[]> lexicon;
@@ -37,23 +32,6 @@ public class FastTag {
     public FastTag() {
         this.lexicon = buildLexicon();
     }
-
-	/**
-	 * 
-	 * @param word
-	 * @return true if the input word is in the lexicon, otherwise return false
-	 */
-	public boolean wordInLexicon(String word) {
-		String[] ss = lexicon.get(word);
-		if (ss != null)
-			return true;
-		// 1/22/2002 mod (from Lisp code): if not in hash, try lower case:
-		if (ss == null)
-			ss = lexicon.get(word.toLowerCase());
-		if (ss != null)
-			return true;
-		return false;
-	}
 
 	/**
 	 * 
@@ -121,27 +99,6 @@ public class FastTag {
 				ret.set(i, "VBG");
 		}
 		return ret;
-	}
-
-	/**
-	 * Simple main test program
-	 * 
-	 * @param args
-	 *            string to tokenize and tag
-	 */
-	public static void main(String[] args) {
-		if (args.length == 0) {
-			System.out.println("Usage: argument is a string like \"The ball rolled down the street.\"\n\nSample run:\n");
-			List<String> words = Tokenizer.wordsToList("The ball rolled down the street.");
-			List<String> tags = new FastTag().tag(words);
-			for (int i = 0; i < words.size(); i++)
-				System.out.println(words.get(i) + "/" + tags.get(i));
-		} else {
-			List<String> words = Tokenizer.wordsToList(args[0]);
-			List<String> tags = new FastTag().tag(words);
-			for (int i = 0; i < words.size(); i++)
-				System.out.println(words.get(i) + "/" + tags.get(i));
-		}
 	}
 
 	private Map<String, String[]> buildLexicon() {
