@@ -26,7 +26,7 @@ public class Tokenizer {
     /**
      * utility to tokenize an input string into an Array of Strings
      * @param s2 string containing words to tokenize
-     * @return a List<String> of parsed tokens
+     * @return a list of parsed tokens
      */
     public static List<String> wordsToList(String s2) {
         return wordsToList(s2, s2.length() + 1);
@@ -36,7 +36,7 @@ public class Tokenizer {
      * utility to tokenize an input string into an Array of Strings - with a maximum # of returned words
      * @param s2 string containing words to tokenize
      * @param maxR maximum number of tokens to return
-     * @return a List<String> of parsed tokens
+     * @return a list of parsed tokens
      */
     public static List<String> wordsToList(String s2, int maxR) {
         s2 = stripControlCharacters(s2);
