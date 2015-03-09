@@ -1,30 +1,70 @@
-fasttag_v2
-==========
+[![Build Status](http://img.shields.io/travis/rholder/fast-tag.svg)](https://travis-ci.org/rholder/fast-tag) [![Latest Version](http://img.shields.io/badge/latest-0.1.0-brightgreen.svg)](https://github.com/rholder/fast-tag/releases/tag/v0.1.0) [![License](http://img.shields.io/badge/license-apache%202-brightgreen.svg)](https://github.com/rholder/fast-tag/blob/master/LICENSE)
 
-Mark Watson  http://markwatson.com
+This is a fork of [Mark Watson](http://markwatson.com)'s Brill-style part of speech
+tagger implementation and a couple of lexicons. You can find the original source
+it was based on [here](https://github.com/mark-watson/fasttag_v2). It currently
+doesn't handle all of the Brill contextual/lexical rules, but it implements a
+nice chunk of them, and it's small, speedy, and includes its own tokenizer
+without any external dependencies.
 
-Licensed under LGPL3 or Apache 2 licenses
+##Maven
+```xml
+<dependency>
+  <groupId>com.github.rholder.nlp</groupId>
+  <artifactId>fast-tag</artifactId>
+  <version>0.1.0</version>
+</dependency>
 
-My Part of Speech Tagger written in Java.
+<dependency>
+  <groupId>com.github.rholder.nlp</groupId>
+  <artifactId>fast-tag-lexicon</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
 
-The code is set up to read the file lexicon.txt. If you also want to handle additional medical terms, use the
-file medical_plus_regular_lexicon.txt instead.
+##Gradle
+```groovy
+compile 'com.github.rholder.nlp:fast-tag:0.1.0'
+compile 'com.github.rholder.nlp:fast-tag-lexicon:0.1.0'
+```
 
-ACKNOWLEDGMENTS:
-----------------
+##Quickstart
+Add both `fast-tag-core` and `fast-tag-lexicon` to your project. Here's a
+snippet that demonstrates some of the tagger's functionality:
 
-- Eric Brill for his lexicon and trained rule set:   http://www.cs.jhu.edu/~brill/
+```java
+String lexiconPath = "/com/github/rholder/nlp/tagging/fast-tag-lexicon.txt";
+FastTag fastTag = new FastTag(Lexicon.fromClasspath(lexiconPath));
 
-- Medpost team for their tagging lexicon:            http://mmtx.nlm.nih.gov/MedPost_SKR.shtml
+List<String> words = Tokenizer.wordsToList("The ball rolled down the street.");
+List<String> tags = fastTag.tag(words);
+for(int i = 0; i < words.size(); i++) {
+    System.out.println(words.get(i) + " / " + tags.get(i));
+}
+```
 
-- Brant Chee for bug reports and bug fixes
+This produces the following output:
 
+```
+The / DT
+ball / NN
+rolled / VBD
+down / RB
+the / DT
+street / NN
+. / .
+```
 
-TAG DEFINITIONS:
-----------------
+## Acknowledgements
+* Based on source code from Mark Watson (http://markwatson.com) licensed under the Apache 2 license.
+* Eric Brill for his lexicon and trained rule set: http://www.cs.jhu.edu/~brill/
+* Medpost team for their tagging lexicon: http://mmtx.nlm.nih.gov/MedPost_SKR.shtml
+* Brant Chee for bug reports and bug fixes
 
-<pre>
-	
+## Lexicon Tag Definitions:
+Here are the tag definitions and some examples used in the `fast-tag-lexicon` module:
+
+```
 CC Coord Conjuncn           and,but,or
 NN Noun, sing. or mass      dog
 CD Cardinal number          one,two
@@ -69,10 +109,12 @@ VBZ Verb, present           eats
 WDT Wh-determiner           which,that
 : Mid-sent punct.           : ; Ñ
 WP Wh pronoun               who,what
+```
 
+## Lexicon from Medpost Tag Definitions:
+Here are the tag definitions and some examples used in the `fast-tag-lexicon-medical` module:
 
-MEDPOST TAG DEFINITIONS:
-
+```
 CC coordinating conjunction
 CS subordinating conjunction
 CSN comparative conjunction (than)
@@ -132,5 +174,4 @@ VVGN nominal gerund
 . end-of-sentence period
 : dashes, colons
  ? ? right quo
-
-</pre>
+```
