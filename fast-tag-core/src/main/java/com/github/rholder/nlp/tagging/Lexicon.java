@@ -25,7 +25,7 @@ import java.util.Scanner;
 public class Lexicon {
 
     public static Map<String, String[]> fromClasspath(String classpath) {
-        return fromInputStream(FastTag.class.getClassLoader().getResourceAsStream(classpath));
+        return fromInputStream(Lexicon.class.getResourceAsStream(classpath));
     }
 
     public static Map<String, String[]> fromInputStream(InputStream inputStream) {

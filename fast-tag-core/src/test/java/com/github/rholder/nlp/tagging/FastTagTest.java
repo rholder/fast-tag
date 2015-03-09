@@ -11,7 +11,7 @@ import static com.github.rholder.nlp.tagging.Tokenizer.wordsToList;
 
 public class FastTagTest {
 
-    private static final FastTag FAST_TAG = new FastTag(Lexicon.fromClasspath("fast-tag-lexicon.txt"));
+    private static final FastTag FAST_TAG = new FastTag(Lexicon.fromClasspath("/com/github/rholder/nlp/tagging/fast-tag-lexicon.txt"));
 
     @Test
     public void happyPath() {
