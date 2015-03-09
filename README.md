@@ -175,3 +175,31 @@ VVGN nominal gerund
 : dashes, colons
  ? ? right quo
 ```
+
+##Building from source
+The `fast-tag` project uses a [Gradle](http://gradle.org)-based build system. In the instructions
+below, [`./gradlew`](http://vimeo.com/34436402) is invoked from the root of the source tree and serves as
+a cross-platform, self-contained bootstrap mechanism for the build. The only
+prerequisites are [Git](https://help.github.com/articles/set-up-git) and JDK 1.6+.
+
+### check out sources
+`git clone git://github.com/rholder/fast-tag.git`
+
+### compile and test, build all jars
+`./gradlew build`
+
+### install all jars into your local Maven cache
+`./gradlew install`
+
+##License
+The `fast-tag` module is released under version 2.0 of the
+[Apache License](http://www.apache.org/licenses/LICENSE-2.0). The FastTag,
+Lexicon, and Tokenizer classes contain code imported from the fasttag_v2 library
+distributed under the terms of the Apache 2 license. Original source:
+```
+Copyright 2003-2008 Mark Watson (markw@markwatson.com)
+```
+Modifications:
+```
+Copyright 2015 Ray Holder
+```
