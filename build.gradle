@@ -3,7 +3,7 @@ import org.gradle.api.artifacts.maven.MavenDeployment
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Settings
 ext {
-    project_group = 'com.github.rholder.nlp.tagging'
+    project_group = 'com.github.rholder.nlp'
     project_version = '0.1.0-SNAPSHOT'
     project_jdk = '1.6'
     project_pom = {
@@ -13,9 +13,9 @@ ext {
         url 'http://rholder.github.com'
 
         scm {
-            url 'scm:git@github.com:rholder/fasttag_v2.git'
-            connection 'scm:git@github.com:rholder/fasttag_v2.git'
-            developerConnection 'scm:git@github.com:rholder/fasttag_v2.git'
+            url 'scm:git@github.com:rholder/fast-tag.git'
+            connection 'scm:git@github.com:rholder/fast-tag.git'
+            developerConnection 'scm:git@github.com:rholder/fast-tag.git'
         }
 
         licenses {
