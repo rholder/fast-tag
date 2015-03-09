@@ -60,9 +60,9 @@ public class Lexicon {
                 lexicon.put(word, ss);
             }
             scanner.close();
+            return Collections.unmodifiableMap(lexicon);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException("An error occurred while loading lexicon", e);
         }
-        return Collections.unmodifiableMap(lexicon);
     }
 }
