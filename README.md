@@ -11,7 +11,7 @@ without any external dependencies.
 ```xml
 <dependency>
   <groupId>com.github.rholder.nlp</groupId>
-  <artifactId>fast-tag</artifactId>
+  <artifactId>fast-tag-core</artifactId>
   <version>0.1.0</version>
 </dependency>
 
@@ -24,7 +24,7 @@ without any external dependencies.
 
 ##Gradle
 ```groovy
-compile 'com.github.rholder.nlp:fast-tag:0.1.0'
+compile 'com.github.rholder.nlp:fast-tag-core:0.1.0'
 compile 'com.github.rholder.nlp:fast-tag-lexicon:0.1.0'
 ```
 
