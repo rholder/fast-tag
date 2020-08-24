@@ -1,5 +1,6 @@
 [![Build Status](http://img.shields.io/travis/rholder/fast-tag.svg)](https://travis-ci.org/rholder/fast-tag) [![Latest Version](http://img.shields.io/badge/latest-0.1.0-brightgreen.svg)](https://github.com/rholder/fast-tag/releases/tag/v0.1.0) [![License](http://img.shields.io/badge/license-apache%202-brightgreen.svg)](https://github.com/rholder/fast-tag/blob/master/LICENSE)
 
+## What is this?
 This is a fork of [Mark Watson](http://markwatson.com)'s Brill-style part of speech
 tagger implementation and a couple of lexicons. You can find the original source
 it was based on [here](https://github.com/mark-watson/fasttag_v2). It currently
@@ -7,7 +8,12 @@ doesn't handle all of the Brill contextual/lexical rules, but it implements a
 nice chunk of them, and it's small, speedy, and includes its own tokenizer
 without any external dependencies.
 
-##Maven
+## How do I use it?
+This project has been deployed to Maven Central to make it easy to integrate into your
+own projects. Here are examples of how to add it to your own Maven or Gradle-based
+project build:
+
+### Maven
 ```xml
 <dependency>
   <groupId>com.github.rholder.nlp</groupId>
@@ -22,13 +28,13 @@ without any external dependencies.
 </dependency>
 ```
 
-##Gradle
+### Gradle
 ```groovy
 compile 'com.github.rholder.nlp:fast-tag-core:0.1.0'
 compile 'com.github.rholder.nlp:fast-tag-lexicon:0.1.0'
 ```
 
-##Quickstart
+## Quickstart
 Add both `fast-tag-core` and `fast-tag-lexicon` to your project. Here's a
 snippet that demonstrates some of the tagger's functionality:
 
@@ -54,12 +60,6 @@ the / DT
 street / NN
 . / .
 ```
-
-## Acknowledgements
-* Based on source code from Mark Watson (http://markwatson.com) licensed under the Apache 2 license.
-* Eric Brill for his lexicon and trained rule set: http://www.cs.jhu.edu/~brill/
-* Medpost team for their tagging lexicon: http://mmtx.nlm.nih.gov/MedPost_SKR.shtml
-* Brant Chee for bug reports and bug fixes
 
 ## Lexicon Tag Definitions:
 Here are the tag definitions and some examples used in the `fast-tag-lexicon` module:
@@ -176,7 +176,7 @@ VVGN nominal gerund
  ? ? right quo
 ```
 
-##Building from source
+## Building from source
 The `fast-tag` project uses a [Gradle](http://gradle.org)-based build system. In the instructions
 below, [`./gradlew`](http://vimeo.com/34436402) is invoked from the root of the source tree and serves as
 a cross-platform, self-contained bootstrap mechanism for the build. The only
@@ -191,7 +191,13 @@ prerequisites are [Git](https://help.github.com/articles/set-up-git) and JDK 1.6
 ### install all jars into your local Maven cache
 `./gradlew install`
 
-##License
+## Acknowledgements
+* Based on source code from Mark Watson (http://markwatson.com) licensed under the Apache 2 license.
+* Eric Brill for his lexicon and trained rule set: http://www.cs.jhu.edu/~brill/
+* Medpost team for their tagging lexicon: http://mmtx.nlm.nih.gov/MedPost_SKR.shtml
+* Brant Chee for bug reports and bug fixes
+
+## License
 The `fast-tag` module is released under version 2.0 of the
 [Apache License](http://www.apache.org/licenses/LICENSE-2.0). The FastTag,
 Lexicon, and Tokenizer classes contain code imported from the fasttag_v2 library
